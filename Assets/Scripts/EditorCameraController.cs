@@ -21,7 +21,7 @@ public class EditorCameraController : MonoBehaviour
     public float slerpDuration = 1.0f;        // time to slerp to viewpoint
     public float lookSensitivity = 2f;        // mouse look sensitivity in viewpoint
 
-    // state
+    // states
     bool isTopDown = true;
     bool isSlerping = false;
     Transform currentViewpoint;
@@ -31,7 +31,7 @@ public class EditorCameraController : MonoBehaviour
     float orbitY;
     float currentDistance;
 
-    // viewpoint look state
+    // hotspot_viewpoint look state
     float yaw;
     float pitch;
 
@@ -50,7 +50,7 @@ public class EditorCameraController : MonoBehaviour
             HandleViewpoint();
     }
 
-    // ================= TOP-DOWN MODE =================
+    // TOP DOWN MODE 
 
     public void GoToTopDown()
     {
@@ -71,7 +71,7 @@ public class EditorCameraController : MonoBehaviour
         {
             // horizontal
             float mouseX = Input.GetAxis("Mouse X");
-            // vertical (invert if you prefer)
+            // vertical 
             float mouseY = Input.GetAxis("Mouse Y");
 
             orbitY += mouseX * orbitSpeed * Time.deltaTime;

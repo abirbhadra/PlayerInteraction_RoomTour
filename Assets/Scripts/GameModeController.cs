@@ -21,9 +21,9 @@ public class GameModeController : MonoBehaviour
     public EditorCameraController editorController;
 
     [Header("UI References")]
-    public Canvas editorCanvas;          // your main Canvas (Canvas)
+    public Canvas editorCanvas;          //Canvas
     public GameObject wallColorPanel;    // wallColorPanel (buttons + Tab text)
-    public GameObject crosshair;         // Crosshair under Canvas (optional)
+    
 
     public GameMode CurrentMode { get; private set; }
 
@@ -34,7 +34,7 @@ public class GameModeController : MonoBehaviour
 
     void Update()
     {
-        // E toggles Play <-> EditorTopDown
+        // E toggles Play - EditorTopDown
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (CurrentMode == GameMode.Play)
@@ -57,8 +57,7 @@ public class GameModeController : MonoBehaviour
 
         bool inEditor = (mode == GameMode.EditorTopDown ||
                          mode == GameMode.EditorViewpoint);
-
-        // ---------- PLAYER / CAMERAS ----------
+      
 
         if (playerRoot != null)
             playerRoot.SetActive(!inEditor);
@@ -72,18 +71,13 @@ public class GameModeController : MonoBehaviour
         if (editorHotspotCamera != null)
             editorHotspotCamera.enabled = inEditor;
 
-        // ---------- UI VISIBILITY ----------
-
-        // We no longer disable the whole canvas – it always stays enabled.
-        // Only the wallColorPanel is toggled by mode.
+        
         if (wallColorPanel != null)
             wallColorPanel.SetActive(mode == GameMode.EditorViewpoint);
 
-        // Optional: show crosshair only in Play
-        if (crosshair != null)
-            crosshair.SetActive(!inEditor);
+        
 
-        // ---------- SCRIPT & CURSOR ----------
+        
 
         if (mode == GameMode.Play)
         {
